@@ -14,11 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.conf.urls import include
 from django.contrib import admin
+from django_project.views import index
 import django_saml2_auth.views
 
 
 urlpatterns = [
     url(r'^saml2_auth/', include('django_saml2_auth.urls')),
     url(r'^admin/', admin.site.urls),
+    url(r'^$', index, name='index'),
 ]

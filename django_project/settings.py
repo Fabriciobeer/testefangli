@@ -34,7 +34,8 @@ SECRET_KEY = 'dcf09e0b8fec9bec8bb688c2d5c13cd9'
 DEBUG = True
 
 # Discover our IP address
-ALLOWED_HOSTS = ip_addresses()
+#ALLOWED_HOSTS = ip_addresses()
+ALLOWED_HOSTS = ['google.bixtecnologia.com.br']
 
 # Application definition
 
@@ -98,7 +99,21 @@ DATABASES = {
 
 SAML2_AUTH = {
     # Metadata is required, choose either remote url or local file path
-    'METADATA_LOCAL_FILE_PATH': '',
+    'METADATA_LOCAL_FILE_PATH': 'home.django.django_project.GoogleIDPMetadata-fernbi.com.br.xml',
+
+    # Optional settings below'
+    'DEFAULT_NEXT_URL': '/admin',
+    
+    'ATTRIBUTES_MAP': {
+    	'email': 'Email',
+	'first_name': 'FirstName',
+	'last_name': 'LastName',
+    },
+    'ASSERTION_URL': 'https://google.bixtecnologia.com.br',
+    'ENTITY_ID': 'https://google.bixtecnologia.com.br/saml2_auth/acs/',
+    'NAME_ID_FORMAT': 'FormatString',
+    'USE_JWT': False,
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -137,5 +152,5 @@ def ip_addresses():
     return ip_list
 
 # Discover our IP address
-ALLOWED_HOSTS = ip_addresses()
-
+#ALLOWED_HOSTS = ip_addresses()
+ALLOWED_HOSTS = ['google.bixtecnologia.com.br']
